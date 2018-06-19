@@ -25,9 +25,14 @@ let checkboxLabelHTML = document.getElementById('checkbox-label');
 
 
 // use store3.subscribe() to register a callback
-// use store3.getState() in the callback to read the current state 
-// use the current state to decide whether checkboxLabelHTML needs to be 'checked' or 'unchecked'
-// use checkboxLabelHTML.innerHTML == ...   to update the label with the correct word
+store3.subscribe(()=>{
+	var state = store3.getState();  // use store3.getState() in the callback to read the current state 
+	if (state.isChecked) {		// use the current state to decide whether checkboxLabelHTML needs to be 'checked' or 'unchecked'
+		checkboxLabelHTML.innerHTML = "checked"  // use checkboxLabelHTML.innerHTML == ...   to update the label with the correct word
+	} else {
+		checkboxLabelHTML.innerHTML = "unchecked"
+	}	
+})
 
 
 checkboxHTML.addEventListener('change', (e)=>{

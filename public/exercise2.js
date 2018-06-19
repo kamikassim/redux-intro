@@ -3,15 +3,18 @@
 
 let reducer2 = (state = 0, action) => {
 	if (action.type == "INCREMENT") {
-		return state + 1
-	}// need a 'else if' here to handle a DECREMENT action
+		return state + 1;
+	} else if (action.type == "DECREMENT"){ // need a 'else if' here to handle a DECREMENT action
+		return state - 1;
+	} else {	
 	return state;
+	}
 }
 
 let store2 = Redux.createStore(reducer2);
 
 let incrementHTML = document.getElementById('counter2-increment');
-// need another variable here that points to 'counter2-decrement'
+let decrementHTML = document.getElementById('counter2-decrement');// need another variable here that points to 'counter2-decrement'
 let counterHTML = document.getElementById('counter2-text');
 
 store2.subscribe(()=>{
@@ -24,5 +27,10 @@ store2.subscribe(()=>{
 incrementHTML.addEventListener('click', (e)=>{
 	store2.dispatch({
 		type: "INCREMENT"
+	})
+})
+decrementHTML.addEventListener('click', (e)=>{
+	store2.dispatch({
+		type: "DECREMENT"
 	})
 })

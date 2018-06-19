@@ -4,11 +4,12 @@
 
 let reducer1 = (state = 0, action) => {
 	// Write code here that will:
-	// 1) check to see if the action is of type "INCREMENT" (see the dispatch call below)
-	// 2) return state + 1 if it's and "INCREMENT"
-	// 3) otherwise just return state
+	if (action.type == "INCREMENT"){ // 1) check to see if the action is of type "INCREMENT" (see the dispatch call below)
+		return state + 1;            // 2) return state + 1 if it's and "INCREMENT"
+	} else {
+		return state;				// 3) otherwise just return state
+	}
 	// (HINT - look at the other exercises to see what might go here)
-	return state;
 }
 
 let store1 = Redux.createStore(reducer1);
